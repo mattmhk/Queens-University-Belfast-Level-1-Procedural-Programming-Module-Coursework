@@ -1,22 +1,31 @@
+/* NT01012 Procedural Programming	     */
+/* Programming Assignment 3	     */
+/*						     */
+/* Question Number:			     */
+/* Name: 				     */
+/* Date: 				     */
+
+
+
 #include <stdio.h>
 
-int main()
-{
-    double x, term, sum = 0.0;
-    int N;
+double squareRoot(double x) {
+    double guess = 1.0;
+    double epsilon = 0.001;
 
-    scanf("%lf", &x);
-    scanf("%d", &N);
-
-    term = x;  // first term
-
-    for (int n = 1; n <= N; n++)
-    {
-        sum += term;
-        term = -term * x * n / (n + 1);
+    while ((guess * guess - x > epsilon) || (x - guess * guess > epsilon)) {
+        guess = (x / guess + guess) / 2.0;
     }
 
-    printf("%.6f\n", sum);
+    return guess;
+}
+
+int main() {
+    double x;
+    scanf("%lf", &x);
+
+    double result = squareRoot(x);
+    printf("%.6f", result);
 
     return 0;
 }
